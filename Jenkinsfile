@@ -18,6 +18,7 @@ pipeline {
 				echo "Test project in development"
 				sh 'npm start & sleep 30 '
 				sh 'echo &! > .pidfile'
+				echo "webserver on: http://127.0.0.1:3000"
 				input message: 'Click to process to allow continue project or abort to quit'
 				sh 'kill -9 $(cat .pidfile)'
 			}
@@ -30,6 +31,7 @@ pipeline {
 				sh 'cd build'
 				sh 'npm start & sleep 30'
 				sh 'echo &! > .pidfile'
+				echo "webserver on: http://127.0.0.1:3000"
 				input message: 'Continue or Abort'
 				sh 'kill -9 $(cat .pidfile)'
 				echo 'production is success for deploy another server in build folder'
